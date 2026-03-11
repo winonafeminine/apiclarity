@@ -96,5 +96,9 @@ spec:
 {{- end }}
             git clone -b {{ .Chart.AppVersion }} https://github.com/openclarity/apiclarity.git &&
             ./apiclarity/tools/tls/certs_gen.sh"
+      {{- with .Values.apiclarity.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
 {{- end }}

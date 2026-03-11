@@ -72,6 +72,10 @@ spec:
           - /bin/bash
           - -c
           - "istioctl verify-install 2>/dev/null | grep -c 'Istio control planes detected'"
+      {{- with .Values.trafficSource.envoyWasm.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
 {{- end }}
 {{- end }}

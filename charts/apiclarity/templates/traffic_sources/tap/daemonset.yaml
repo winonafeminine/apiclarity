@@ -76,6 +76,10 @@ spec:
         configMap:
           name: {{ .Values.apiclarity.tls.rootCACertConfigMapName }}
       {{- end }}
+      {{- with .Values.trafficSource.tap.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       dnsPolicy: ClusterFirstWithHostNet
       hostNetwork: true
       restartPolicy: Always

@@ -101,6 +101,9 @@ apiclarity:
       memory: "1000Mi"
       cpu: "200m"
 
+  ## Affinity for APIClarity pod scheduling (also applied to cert creation/deletion jobs)
+  affinity: {}
+
 ## End of APIClarity Values
 #######################################################################################
 
@@ -121,11 +124,12 @@ postgresql:
     existingSecret: apiclarity-postgresql-secret
     database: apiclarity
 
-  ## Persistence configuration
+  ## Persistence configuration and affinity
   primary:
     persistence:
       enabled: true
       size: 8Gi
+    affinity: {}
 
 # End of APIClarity Postgres Values
 #######################################################################################
@@ -144,6 +148,9 @@ trafficSource:
     ##
     enabled: false
 
+    ## Affinity for Envoy WASM pre/post-install Job pod scheduling
+    affinity: {}
+
     ## Enable Istio verification in a Pre-Install Job
     ##
     enableIstioVerify: true
@@ -157,6 +164,9 @@ trafficSource:
     ## Enable Tap traffic source
     ##
     enabled: false
+
+    ## Affinity for TAP DaemonSet pod scheduling
+    affinity: {}
 
     ## Enable APIClarity Tap in the following namespaces
     ##
@@ -176,6 +186,9 @@ trafficSource:
     ## Enable Kong traffic source
     ##
     enabled: false
+
+    ## Affinity for Kong post-install Job pod scheduling
+    affinity: {}
 
     ## Carry out post-install patching of kong container to install plugin
     patch: true
@@ -200,6 +213,9 @@ trafficSource:
     ## Enable Tyk traffic source
     ##
     enabled: false
+
+    ## Affinity for Tyk pre/post-install Job pod scheduling
+    affinity: {}
 
     ## Enable Tyk verification in a Pre-Install Job
     ##

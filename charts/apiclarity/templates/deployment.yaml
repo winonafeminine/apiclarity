@@ -145,3 +145,7 @@ spec:
       {{- end }}
       securityContext:
         fsGroup: 1000
+      {{- with .Values.apiclarity.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
