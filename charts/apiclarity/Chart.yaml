@@ -11,9 +11,3 @@ maintainers:
   - name: API Clarity
     url: https://apiclarity.io
 type: application
-dependencies:
-  - name: postgresql
-    version: "11.6.12"
-    repository: https://charts.bitnami.com/bitnami
-    condition: apiclarity-postgresql.enabled
-    alias: apiclarity-postgresql
