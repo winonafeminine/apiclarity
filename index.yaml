@@ -3,7 +3,25 @@ entries:
   apiclarity:
   - apiVersion: v2
     appVersion: latest
-    created: "2026-03-11T08:13:10.414301251Z"
+    created: "2026-03-11T09:55:18.798569763Z"
+    description: Charts for APIClarity deployment. Reconstruct OpenAPI Specifications
+      from real-time workload traffic seamlessly.
+    digest: 5d44a682e5ff62619242f16fb98255024fad361588394228d51a197c5eaafa4a
+    home: https://apiclarity.io/
+    icon: https://github.com/openclarity/apiclarity/raw/master/API_clarity.svg
+    maintainers:
+    - name: API Clarity
+      url: https://apiclarity.io
+    name: apiclarity
+    sources:
+    - https://github.com/openclarity/apiclarity
+    type: application
+    urls:
+    - https://winonafeminine.github.io/apiclarity/apiclarity-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-03-11T09:55:18.795635736Z"
     description: Charts for APIClarity deployment. Reconstruct OpenAPI Specifications
       from real-time workload traffic seamlessly.
     digest: c32b3e8a7bcc008714858e7223a1c54d2d9593f511bbedeeaba020b54a509d84
@@ -21,7 +39,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: latest
-    created: "2026-03-11T08:13:10.412682322Z"
+    created: "2026-03-11T09:55:18.791581687Z"
     description: Charts for APIClarity deployment. Reconstruct OpenAPI Specifications
       from real-time workload traffic seamlessly.
     digest: 101b645df52b2076cbd7b6ae271c3808fb343d67b49da3361e817f0533abb290
@@ -37,4 +55,4 @@ entries:
     urls:
     - https://winonafeminine.github.io/apiclarity/apiclarity-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-11T08:13:10.41091731Z"
+generated: "2026-03-11T09:55:18.789129414Z"
