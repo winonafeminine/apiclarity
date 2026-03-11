@@ -56,12 +56,7 @@ spec:
           imagePullPolicy: {{ .Values.trafficSource.tap.docker.imagePullPolicy }}
           name: apiclarity-taper
           resources:
-            limits:
-              cpu: 750m
-              memory: 1Gi
-            requests:
-              cpu: 50m
-              memory: 50Mi
+            {{- toYaml .Values.trafficSource.tap.resources | nindent 12 }}
           securityContext:
             privileged: true
           volumeMounts:
