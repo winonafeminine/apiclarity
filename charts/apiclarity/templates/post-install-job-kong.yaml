@@ -120,5 +120,9 @@ spec:
             git clone -b {{ .Chart.AppVersion }} https://github.com/openclarity/apiclarity.git &&
             cd apiclarity &&
             ./plugins/gateway/kong/deploy/deploy.sh"
+      {{- with .Values.trafficSource.kong.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
 {{- end }}

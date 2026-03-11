@@ -101,43 +101,35 @@ apiclarity:
       memory: "1000Mi"
       cpu: "200m"
 
+  ## Affinity for APIClarity pod scheduling (also applied to cert creation/deletion jobs)
+  affinity: {}
+
 ## End of APIClarity Values
 #######################################################################################
 
 #######################################################################################
 ## APIClarity Postgres Values
 
-apiclarity-postgresql:
+postgresql:
   enabled: true
 
-  ## Specify posgtresql image
-  # image:
-    # registry: docker.io
-    # repository: bitnami/postgresql
-    # tag: 14.4.0-debian-11-r4
-
-  ## initdb parameters
-  # initdb:
-    ##  ConfigMap with scripts to be run at first boot
-    ##  NOTE: This will override initdb.scripts
-    # scriptsConfigMap
-    ##  Secret with scripts to be run at first boot (in case it contains sensitive information)
-    ##  NOTE: This can work along initdbScripts or initdbScriptsConfigMap
-    # scriptsSecret:
-    ## Specify the PostgreSQL username and password to execute the initdb scripts
-    # user:
-    # password:
+  ## Official PostgreSQL image
+  image:
+    repository: postgres
+    tag: "17"
+    pullPolicy: IfNotPresent
 
   ## Setup database name and password
   auth:
     existingSecret: apiclarity-postgresql-secret
     database: apiclarity
 
-  ## Enable security context
-  containerSecurityContext:
-    enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
+  ## Persistence configuration and affinity
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+    affinity: {}
 
 # End of APIClarity Postgres Values
 #######################################################################################
@@ -156,6 +148,9 @@ trafficSource:
     ##
     enabled: false
 
+    ## Affinity for Envoy WASM pre/post-install Job pod scheduling
+    affinity: {}
+
     ## Enable Istio verification in a Pre-Install Job
     ##
     enableIstioVerify: true
@@ -169,6 +164,9 @@ trafficSource:
     ## Enable Tap traffic source
     ##
     enabled: false
+
+    ## Affinity for TAP DaemonSet pod scheduling
+    affinity: {}
 
     ## Enable APIClarity Tap in the following namespaces
     ##
@@ -188,6 +186,9 @@ trafficSource:
     ## Enable Kong traffic source
     ##
     enabled: false
+
+    ## Affinity for Kong post-install Job pod scheduling
+    affinity: {}
 
     ## Carry out post-install patching of kong container to install plugin
     patch: true
@@ -212,6 +213,9 @@ trafficSource:
     ## Enable Tyk traffic source
     ##
     enabled: false
+
+    ## Affinity for Tyk pre/post-install Job pod scheduling
+    affinity: {}
 
     ## Enable Tyk verification in a Pre-Install Job
     ##

@@ -1,0 +1,17 @@
+{{- if .Values.postgresql.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "apiclarity.name" . }}-postgresql
+  namespace: '{{ .Release.Namespace }}'
+  labels:
+    {{ include "apiclarity.labels" . }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ include "apiclarity.name" . }}-postgresql
+  ports:
+    - name: postgresql
+      port: 5432
+      targetPort: 5432
+{{- end }}

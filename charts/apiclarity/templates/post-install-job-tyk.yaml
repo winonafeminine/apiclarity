@@ -106,5 +106,9 @@ spec:
             git clone -b {{ .Chart.AppVersion }} https://github.com/openclarity/apiclarity.git &&
             cd apiclarity &&
             ./plugins/gateway/tyk/deploy/deploy.sh"
+      {{- with .Values.trafficSource.tyk.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
 {{- end }}

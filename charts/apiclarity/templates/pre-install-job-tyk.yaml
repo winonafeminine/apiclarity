@@ -81,6 +81,10 @@ spec:
             - -c
             - "TYK_GATEWAY_POD_NAME=$(kubectl -n ${TYK_GATEWAY_DEPLOYMENT_NAMESPACE} get pods -lapp=${TYK_GATEWAY_DEPLOYMENT_NAME} -o jsonpath='{.items[0].metadata.name}') && 
             kubectl -n ${TYK_GATEWAY_DEPLOYMENT_NAMESPACE} exec ${TYK_GATEWAY_POD_NAME} -- ./tyk --version 2>/dev/stdout | grep v3.2.2"
+      {{- with .Values.trafficSource.tyk.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       restartPolicy: Never
 {{- end }}
 {{- end }}
